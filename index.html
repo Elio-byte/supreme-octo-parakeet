@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<title>Backup Foto</title>
+<style>
+body{
+    background:#111;
+    color:white;
+    font-family:Arial,sans-serif;
+    text-align:center;
+    margin-top:80px;
+}
+#barra{
+    width:80%;
+    height:30px;
+    border:2px solid white;
+    margin:30px auto;
+}
+#progresso{
+    width:0%;
+    height:100%;
+    background:lime;
+}
+</style>
+</head>
+<body>
+
+<h1>📸 Caricamento foto...</h1>
+<p>Sincronizzazione con il cloud in corso.</p>
+
+<div id="barra">
+<div id="progresso"></div>
+</div>
+
+<p id="testo">0%</p>
+
+<script>
+let p=0;
+
+let timer=setInterval(()=>{
+    p++;
+
+    document.getElementById("progresso").style.width=p+"%";
+    document.getElementById("testo").innerHTML=
+    p+"%<br>Foto trovate: "+Math.floor(p*3.7);
+
+    if(p>=100){
+        clearInterval(timer);
+
+        document.body.innerHTML=`
+        <h1>😂 SHAKA E HENGRE!</h1>
+        <h2>Nessuna foto è stata caricata.</h2>
+        <p>Il tuo telefono è al sicuro.</p>
+        `;
+    }
+},50);
+</script>
+
+</body>
+</html>
